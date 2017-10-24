@@ -50,7 +50,7 @@ public class MinMax {
 
 		try {
 
-			File file = new File("C:\\Users\\1627929\\Desktop\\valueTable.csv");
+			File file = new File(System.getProperty("user.dir") + "/" + "valueTable.csv");
 			BufferedReader br = new BufferedReader(new FileReader(file));
 
 			String str = br.readLine();
