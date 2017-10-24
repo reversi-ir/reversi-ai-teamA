@@ -133,7 +133,7 @@ public class MainProcessor
 	 */
 	@Override
 	public String getName() {
-		return "TeamB";
+		return "チームA";
 	}
 
 }
