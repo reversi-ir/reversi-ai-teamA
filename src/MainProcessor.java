@@ -4,6 +4,7 @@ import jp.takedarts.reversi.Position;
 import jp.takedarts.reversi.Processor;
 import subClass.KaihoudoRiron;
 import subClass.MinMax;
+import subClass.SampleMinMax;
 
 /**
  * Reversi人工知能のサンプルプログラム。
@@ -85,6 +86,7 @@ public class MainProcessor
 		}
 
 		KaihoudoRiron kaihoudoRiron = new KaihoudoRiron();
+		SampleMinMax SampleMinMax = new SampleMinMax();
 		Position position = null;
 
 		//4すみに置けなかったとき場合わけ
@@ -95,7 +97,7 @@ public class MainProcessor
 			//序盤
 			case 0:
 
-				position = minmax.minmax(board, piece, thinkingTime);
+				position = SampleMinMax.nextPosition(board, piece, thinkingTime);
 				break;
 
 			//中盤
@@ -108,7 +110,7 @@ public class MainProcessor
 			//終盤
 			case 2:
 
-				position = minmax.minmax(board, piece, thinkingTime);
+				position = SampleMinMax.nextPosition(board, piece, thinkingTime);
 				break;
 			}
 
