@@ -13,15 +13,15 @@ import jp.takedarts.reversi.Position;
 public class MinMax {
 
 	/**
-    * 評価テーブル。
-    */
+	 * 評価テーブル。
+	 */
 
-	final int[][] _VALUES= new int [8][8];
+	private static int[][]_VALUES = new int[8][8];
 
 	public MinMax() {
-	String dataStr;
+		String dataStr;
 
-	String[] strList;
+		String[] strList;
 
 		try {
 
@@ -32,7 +32,6 @@ public class MinMax {
 			while (str != null) {
 
 				for (int a = 0; a < 8; a++) {
-
 					str = br.readLine();
 					String[] data = str.split(",", 0);
 
@@ -44,6 +43,7 @@ public class MinMax {
 					}
 
 				}
+				str = br.readLine();
 
 			}
 
@@ -57,13 +57,16 @@ public class MinMax {
 	}
 
 	/**
-	* 手番が来たときに、次の手を決定するメソッド。
-	*
-	* @param board 盤面の状態
-	* @param piece 自分が打つ駒
-	* @param thinkingTime 思考時間
-	* @return 次の手を置く場所
-	*/
+	 * 手番が来たときに、次の手を決定するメソッド。
+	 *
+	 * @param board
+	 *            盤面の状態
+	 * @param piece
+	 *            自分が打つ駒
+	 * @param thinkingTime
+	 *            思考時間
+	 * @return 次の手を置く場所
+	 */
 
 	public Position minmax(Board board, Piece piece, long thinkingTime) {
 		// 次に置ける場所の中で、もっとも評価の高い場所を探す
@@ -102,8 +105,10 @@ public class MinMax {
 	/**
 	 * 盤面の評価値を計算する。
 	 *
-	 * @param board 盤面の状態
-	 * @param piece 自分の駒
+	 * @param board
+	 *            盤面の状態
+	 * @param piece
+	 *            自分の駒
 	 * @return 評価値
 	 */
 	private int _getValue(Board board, Piece piece) {
@@ -157,7 +162,7 @@ public class MinMax {
 		return min;
 	}
 
-	///////////////////////////////////分岐のプログラム///////////////////////////////
+	/////////////////////////////////// 分岐のプログラム///////////////////////////////
 	public int kyokumen(Board board, Piece piece) {
 
 		int kyokumenflag = 0;
@@ -181,7 +186,7 @@ public class MinMax {
 
 	}
 
-	///////////ランダム関数を発生させるメソッドはこれです。////////////////
+	/////////// ランダム関数を発生させるメソッドはこれです。////////////////
 
 	// ランダム関数を発生させるメソッド
 	public int randomvalue() {

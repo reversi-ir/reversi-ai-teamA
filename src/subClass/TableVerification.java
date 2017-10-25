@@ -125,11 +125,18 @@ public class TableVerification {
 						stringRandomValues[b] = randomStr;
 
 						if (b == 7) {
-							randomList = Arrays.stream(stringRandomValues).map(line -> String.join(",", line))
-									.collect(Collectors.toList());
+							// randomList = Arrays.stream(stringRandomValues).map(line -> String.join(",",
+							// line))
+							// .collect(Collectors.toList());
+							for (i = 0; i < 8; i++) {
+								pw_randomValueTable.print(stringRandomValues[i]);
+								if (i != 7) {
+									pw_randomValueTable.print(",");
+								}
 
-							pw_randomValueTable.print(randomList);
-							pw_valueTable.println();
+							}
+
+							pw_randomValueTable.println();
 
 						}
 					}
@@ -206,30 +213,30 @@ public class TableVerification {
 
 							playBoard.putPiece(myPosition, piece);
 
-							//System.out.println(playBoard);
-							//System.out.println("");
+							// System.out.println(playBoard);
+							// System.out.println("");
 
 						} else if (!playBoard.hasEnablePositions(piece)) {
 
 							System.out.println(piece + "：　パス");
-							//System.out.println("");
+							// System.out.println("");
 						}
 
 						if (playBoard.hasEnablePositions(opponentPiece)) {
 
 							Position opponentPosition = opponentProcessor.nextPosition(playBoard, opponentPiece, 30000);
 							playBoard.putPiece(opponentPosition, opponentPiece);
-							//System.out.println("");
+							// System.out.println("");
 
 						} else if (!playBoard.hasEnablePositions(opponentPiece)) {
 
 							System.out.println(opponentPiece + "：　パス");
-							//System.out.println("");
+							// System.out.println("");
 
 						}
 
-						//System.out.println(playBoard);
-						//System.out.println("");
+						// System.out.println(playBoard);
+						// System.out.println("");
 
 					}
 
