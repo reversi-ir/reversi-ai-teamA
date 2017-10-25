@@ -13,40 +13,15 @@ import jp.takedarts.reversi.Position;
 public class MinMax {
 
 	/**
-	    * 評価テーブル。
-	     */
-	//	private static int[][] _VALUES = new int[][] {
-	//			{
-	//					9, 2, 8, 6, 6, 8, 2, 9
-	//			},
-	//			{
-	//					2, 1, 4, 5, 5, 4, 1, 2
-	//			},
-	//			{
-	//					8, 4, 6, 5, 5, 6, 4, 8
-	//			},
-	//			{
-	//					6, 5, 5, 4, 4, 5, 5, 6
-	//			},
-	//			{
-	//					6, 5, 5, 4, 4, 5, 5, 6
-	//			},
-	//			{
-	//					8, 4, 6, 5, 5, 6, 4, 8
-	//			},
-	//			{
-	//					2, 1, 4, 5, 5, 4, 1, 2
-	//			},
-	//			{
-	//					9, 2, 8, 6, 6, 8, 2, 9
-	//			}
-	//	};
+    * 評価テーブル。
+    */
 
-	int[][] _VALUES;
+	final int[][] _VALUES= new int [8][8];
+
+	public MinMax() {
 	String dataStr;
 
 	String[] strList;
-	{
 
 		try {
 
