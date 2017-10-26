@@ -119,7 +119,7 @@ public class KaihoudoRiron {
 
 						// 発展開放度 ＝ 自分の開放度 - 相手の開放度 + 次の自分の開放度
 						int bestKaihoudo = value - oppositeKaihoudo + afterNextKaihoudo;
-								- kaihoudo3 + kaihoudo4 - kaihoudo5 + kaihoudo6 - kaihoudo7 + kaihoudo8;
+//								- kaihoudo3 + kaihoudo4 - kaihoudo5 + kaihoudo6 - kaihoudo7 + kaihoudo8;
 
 						// 真に小さい開放度が見つかった場合
 						if (bestKaihoudo < kaihoudo) {

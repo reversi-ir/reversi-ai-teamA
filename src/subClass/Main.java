@@ -101,11 +101,11 @@ public class Main
 			//中盤
 			case 1:
 
-//				// 開放度理論
-//				position = kaihoudoRiron.KaihoudoLogic(board, piece);
+				// 開放度理論
+				position = kaihoudoRiron.KaihoudoLogic(board, piece);
 
-				// 発展開放度理論
-				position = kaihoudoRiron.HattenKaihoudoLogicKaihoudoLogic(board, piece);
+//				// 発展開放度理論
+//				position = kaihoudoRiron.HattenKaihoudoLogicKaihoudoLogic(board, piece);
 
 				break;
 
