@@ -131,7 +131,7 @@ public class Main
 	 */
 	@Override
 	public String getName() {
-		return "サンラム";
+		return "サンプル";
 	}
 
 }
