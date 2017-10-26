@@ -57,7 +57,7 @@ public class TableVerification {
 		}
 
 		// 外側ループ：ランダム評価テーブルを何回か試す
-		for (count = 0; count < 2; count++) {
+		for (count = 0; count < 5; count++) {
 
 			/////////// メインに書きたい：乱数を発生させて座標の各位置に評価値を入力するプログラム//////////////
 
@@ -277,6 +277,9 @@ public class TableVerification {
 					for (a = 0; a < 8; a++) {
 						for (b = 0; b < 8; b++) {
 
+							randomStr = String.valueOf(_VALUES[a][b]);
+
+							stringRandomValues[b] = randomStr;
 
 							if (b == 7) {
 								for (i = 0; i < 8; i++) {
