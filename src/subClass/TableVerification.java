@@ -254,6 +254,8 @@ public class TableVerification {
 
 					}
 
+					playBoard = new Board();
+
 				}
 				// CSVから結果を読み込む
 
