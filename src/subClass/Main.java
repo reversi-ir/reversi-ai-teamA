@@ -87,6 +87,7 @@ public class Main
 		KaihoudoRiron kaihoudoRiron = new KaihoudoRiron();
 		Position position = null;
 
+
 		//4すみに置けなかったとき場合わけ
 		if (cornerFlag != 1) {
 
@@ -135,7 +136,7 @@ public class Main
 	 */
 	@Override
 	public String getName() {
-		return "サンプル";
+		return "Aチームオセロプログラム";
 	}
 
 }

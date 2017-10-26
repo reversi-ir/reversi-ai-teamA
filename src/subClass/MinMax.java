@@ -176,7 +176,11 @@ public class MinMax {
 		int kyokumenflag = 0;
 		int countreult = 0;
 
-		countreult = board.countPiece(piece);
+		countreult = board.countPiece(piece) + board.countPiece(Piece.opposite(piece));
+
+		// 駒数チェックのためのsysout
+		System.out.println("現在駒数:" + countreult);
+
 
 		if (countreult < 20) {
 			kyokumenflag = 0;

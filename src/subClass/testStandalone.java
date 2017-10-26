@@ -22,8 +22,12 @@ public class testStandalone {
 		Piece piece = Piece.BLACK;
 
 		//相手(white)　←ここを更新
-		SampleMinMax opponentProcessor = new SampleMinMax();
+		RandomProcessor opponentProcessor = new RandomProcessor();
 		Piece opponentPiece = Piece.WHITE;
+
+//		//相手(white)　←ここを更新
+//		SampleMinMax opponentProcessor = new SampleMinMax();
+//		Piece opponentPiece = Piece.WHITE;
 
 		System.out.println("AI(BLACK)(自分)：　" + myProcessor.getName());
 		System.out.println("AI(WHITE)(相手)：　" + opponentProcessor.getName());

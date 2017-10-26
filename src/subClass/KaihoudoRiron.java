@@ -63,7 +63,7 @@ public class KaihoudoRiron {
 						int afterNextKaihoudo = returnMinKaihoudo(afterNextBoard, piece);
 						Position afterNextPosition = returnPlace(afterNextBoard, piece);
 
-
+//
 //						// 2回読む
 //						// 盤の生成
 //						Board board3 = new Board(afterNextBoard.getBoard());
