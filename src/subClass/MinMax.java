@@ -13,50 +13,6 @@ import jp.takedarts.reversi.Position;
 public class MinMax {
 
 	/**
-	 * 評価テーブル。
-	 */
-
-	private static int[][]_VALUES = new int[8][8];
-
-	public MinMax() {
-		String dataStr;
-
-		String[] strList;
-
-		try {
-
-			File file = new File(System.getProperty("user.dir") + "/" + "valueTable.csv");
-			BufferedReader br = new BufferedReader(new FileReader(file));
-
-			String str = br.readLine();
-			while (str != null) {
-
-				for (int a = 0; a < 8; a++) {
-					str = br.readLine();
-					String[] data = str.split(",", 0);
-
-					for (int b = 0; b < 8; b++) {
-
-						dataStr = data[b];
-						_VALUES[a][b] = Integer.parseInt(dataStr);
-
-					}
-
-				}
-				str = br.readLine();
-
-			}
-
-			br.close();
-
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-	}
-
-	/**
 	 * 手番が来たときに、次の手を決定するメソッド。
 	 *
 	 * @param board
@@ -113,7 +69,12 @@ public class MinMax {
 	 */
 	private int _getValue(Board board, Piece piece) {
 		int value = 0;
+		int[][] _VALUES = new int[8][8];
 
+		// 評価テーブルをセット
+		_VALUES = setValue();
+
+		// 評価値算出
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (board.getPiece(i, j) == piece) {
@@ -138,6 +99,8 @@ public class MinMax {
 		Piece enemy = Piece.opposite(piece);
 		int min = Integer.MAX_VALUE;
 
+		// 評価値算出
+
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				// 駒を置けない場合は何もしない
@@ -160,6 +123,51 @@ public class MinMax {
 		}
 
 		return min;
+	}
+
+	/**
+	 * CSVファイルを読み込み評価テーブルをセットする。
+	 *
+	 * @return 評価テーブル
+	 */
+	public int[][] setValue() {
+
+		int[][] _VALUES = new int[8][8];
+		String dataStr;
+		// 評価テーブルをセット
+		try {
+
+			File file = new File(System.getProperty("user.dir") + "/" + "random" + "/" +"valueTable.csv");
+			BufferedReader br = new BufferedReader(new FileReader(file));
+
+			String str = br.readLine();
+			while (str != null) {
+
+				for (int a = 0; a < 8; a++) {
+
+					String[] data = str.split(",", 0);
+
+					for (int b = 0; b < 8; b++) {
+
+						dataStr = data[b];
+						_VALUES[a][b] = Integer.parseInt(dataStr);
+
+					}
+
+				}
+				str = br.readLine();
+
+			}
+
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+
+		return _VALUES;
 	}
 
 	/////////////////////////////////// 分岐のプログラム///////////////////////////////

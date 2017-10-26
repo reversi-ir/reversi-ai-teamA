@@ -10,16 +10,14 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import jp.takedarts.reversi.Board;
 import jp.takedarts.reversi.Piece;
 import jp.takedarts.reversi.Position;
 
 /**
- * モンテカルロ法の検証用ツール （出力結果(黒の駒数、白の駒数、処理時間)をcsvファイルへ書き出し）
+ * 評価テーブルの検証用ツール （勝率の高い評価テーブルをcsvファイルへ書き出し）
  *
  * @author 1517643
  *
@@ -59,7 +57,7 @@ public class TableVerification {
 		}
 
 		// 外側ループ：ランダム評価テーブルを何回か試す
-		for (count = 0; count < 8; count++) {
+		for (count = 0; count < 2; count++) {
 
 			/////////// メインに書きたい：乱数を発生させて座標の各位置に評価値を入力するプログラム//////////////
 
@@ -102,12 +100,6 @@ public class TableVerification {
 				BufferedWriter fw_board = new BufferedWriter(osw_board);
 				PrintWriter pw_board = new PrintWriter(new BufferedWriter(fw_board));
 
-				FileOutputStream fos_valueTable = new FileOutputStream(
-						System.getProperty("user.dir") + "/" + "valueTable.csv", false);
-				OutputStreamWriter osw_valueTable = new OutputStreamWriter(fos_valueTable, "SJIS");
-				BufferedWriter fw_valueTable = new BufferedWriter(osw_valueTable);
-				PrintWriter pw_valueTable = new PrintWriter(new BufferedWriter(fw_valueTable));
-
 				FileOutputStream fos_randomValueTable = new FileOutputStream(
 						System.getProperty("user.dir") + "/" + "random" + "/" + "valueTable.csv", false);
 				OutputStreamWriter osw_randomValueTable = new OutputStreamWriter(fos_randomValueTable, "SJIS");
@@ -125,9 +117,6 @@ public class TableVerification {
 						stringRandomValues[b] = randomStr;
 
 						if (b == 7) {
-							// randomList = Arrays.stream(stringRandomValues).map(line -> String.join(",",
-							// line))
-							// .collect(Collectors.toList());
 							for (i = 0; i < 8; i++) {
 								pw_randomValueTable.print(stringRandomValues[i]);
 								if (i != 7) {
@@ -259,16 +248,6 @@ public class TableVerification {
 					pw_board.print(playBoard);
 					pw_board.println();
 
-					// try {
-
-					// Files.write(Paths.get(System.getProperty("user.dir"), "out.csv"), list,
-					// StandardOpenOption.CREATE);
-					// } catch (IOException e) {
-					// e.printStackTrace();
-					// }
-
-					playBoard = new Board(testBoard.getBoard());
-
 					if ((playBoard.countPiece(piece) - playBoard.countPiece(opponentPiece)) > 0) {
 
 						result += 1;
@@ -278,14 +257,17 @@ public class TableVerification {
 				}
 				// CSVから結果を読み込む
 
-				// 現状1位と今回の結果を比較する
+				// 現状1位と今回の結果を比較し、勝率が高かった場合に結果を出力
 				if (first < result) {
 
 					first = result;
 
-					String stringValues[] = new String[8];
-					String iStr;
-					List<String> firstList = new ArrayList<>();
+					// 出力先作成
+					FileOutputStream fos_valueTable = new FileOutputStream(
+							System.getProperty("user.dir") + "/" + "valueTable.csv", false);
+					OutputStreamWriter osw_valueTable = new OutputStreamWriter(fos_valueTable, "SJIS");
+					BufferedWriter fw_valueTable = new BufferedWriter(osw_valueTable);
+					PrintWriter pw_valueTable = new PrintWriter(new BufferedWriter(fw_valueTable));
 
 					pw_valueTable.print(first);
 					pw_valueTable.println();
@@ -293,26 +275,29 @@ public class TableVerification {
 					for (a = 0; a < 8; a++) {
 						for (b = 0; b < 8; b++) {
 
-							iStr = String.valueOf(_VALUES[b]);
-
-							stringValues[b] = iStr;
 
 							if (b == 7) {
-								firstList = Arrays.stream(stringValues).map(line -> String.join(",", line))
-										.collect(Collectors.toList());
+								for (i = 0; i < 8; i++) {
+									pw_valueTable.print(stringRandomValues[i]);
+									if (i != 7) {
+										pw_valueTable.print(",");
+									}
 
-								pw_valueTable.print(firstList);
+								}
+
 								pw_valueTable.println();
+
 							}
 						}
 					}
 
+					// 出力
+					pw_valueTable.close();
 				}
 
 				// ファイルに書き出す
 				pw.close();
 				pw_board.close();
-				pw_valueTable.close();
 
 			} catch (IOException ex) {
 				// 例外時処理
