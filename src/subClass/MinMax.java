@@ -201,13 +201,38 @@ public class MinMax {
 	/////////// ランダム関数を発生させるメソッドはこれです。////////////////
 
 	// ランダム関数を発生させるメソッド
+	// 11～60
 	public int randomvalue() {
 
 		// randomメソッドは実数を生成する変数を宣言
 		int resultvalue;
 		// randomメソッドで生成した実数を変数resultvalueに代入
-		resultvalue = (int) (Math.floor(Math.random() * 100));
+		resultvalue = (int) (Math.floor(Math.random() * 50) + 11);
 
 		return resultvalue;
 	}
+
+	// 1～10
+	public int randomvalue2() {
+
+		// randomメソッドは実数を生成する変数を宣言
+		int resultvalue;
+		// randomメソッドで生成した実数を変数resultvalueに代入
+		resultvalue = (int) (Math.floor(Math.random() * 10) + 1);
+
+		return resultvalue;
+	}
+
+	// 61～80
+		public int randomvalue3() {
+
+			// randomメソッドは実数を生成する変数を宣言
+			int resultvalue;
+			// randomメソッドで生成した実数を変数resultvalueに代入
+			resultvalue = (int) (Math.floor(Math.random() * 20) + 61);
+
+			return resultvalue;
+		}
+
+
 }
