@@ -63,63 +63,63 @@ public class KaihoudoRiron {
 						int afterNextKaihoudo = returnMinKaihoudo(afterNextBoard, piece);
 						Position afterNextPosition = returnPlace(afterNextBoard, piece);
 
-//
-//						// 2回読む
-//						// 盤の生成
-//						Board board3 = new Board(afterNextBoard.getBoard());
-//						board3.putPiece(afterNextPosition.getX(), afterNextPosition.getY(), piece);
-//
-//						// その次の相手の番
-//						int kaihoudo3 = returnMinKaihoudo(board3, Piece.opposite(piece));
-//						Position position3 = returnPlace(board3, Piece.opposite(piece));
-//
-//						// 盤の生成
-//						Board board4 = new Board(board3.getBoard());
-//						board4.putPiece(position3.getX(), position3.getY(), Piece.opposite(piece));
-//
-//						// その次の自分の番
-//						int kaihoudo4 = returnMinKaihoudo(board4, piece);
-//						Position position4 = returnPlace(board4, piece);
-//
-//
-//						// 3回読む
-//						// 盤の生成
-//						Board board5 = new Board(board4.getBoard());
-//						board5.putPiece(position4.getX(), position4.getY(), piece);
-//
-//						// その次の相手の番
-//						int kaihoudo5 = returnMinKaihoudo(board5, Piece.opposite(piece));
-//						Position position5 = returnPlace(board5, Piece.opposite(piece));
-//
-//						// 盤の生成
-//						Board board6 = new Board(board5.getBoard());
-//						board6.putPiece(position5.getX(), position5.getY(), Piece.opposite(piece));
-//
-//						// その次の自分の番
-//						int kaihoudo6 = returnMinKaihoudo(board6, piece);
-//						Position position6 = returnPlace(board6, piece);
-//
-//						// 4回読む
-//						// 盤の生成
-//						Board board7 = new Board(board6.getBoard());
-//						board7.putPiece(position6.getX(), position6.getY(), piece);
-//
-//						// その次の相手の番
-//						int kaihoudo7 = returnMinKaihoudo(board7, Piece.opposite(piece));
-//						Position position7 = returnPlace(board7, Piece.opposite(piece));
-//
-//						// 盤の生成
-//						Board board8 = new Board(board7.getBoard());
-//						board8.putPiece(position7.getX(), position7.getY(), Piece.opposite(piece));
-//
-//						// その次の自分の番
-//						int kaihoudo8 = returnMinKaihoudo(board8, piece);
-//						Position position8 = returnPlace(board8, piece);
+
+						// 2回読む
+						// 盤の生成
+						Board board3 = new Board(afterNextBoard.getBoard());
+						board3.putPiece(afterNextPosition.getX(), afterNextPosition.getY(), piece);
+
+						// その次の相手の番
+						int kaihoudo3 = returnMinKaihoudo(board3, Piece.opposite(piece));
+						Position position3 = returnPlace(board3, Piece.opposite(piece));
+
+						// 盤の生成
+						Board board4 = new Board(board3.getBoard());
+						board4.putPiece(position3.getX(), position3.getY(), Piece.opposite(piece));
+
+						// その次の自分の番
+						int kaihoudo4 = returnMinKaihoudo(board4, piece);
+						Position position4 = returnPlace(board4, piece);
+
+
+						// 3回読む
+						// 盤の生成
+						Board board5 = new Board(board4.getBoard());
+						board5.putPiece(position4.getX(), position4.getY(), piece);
+
+						// その次の相手の番
+						int kaihoudo5 = returnMinKaihoudo(board5, Piece.opposite(piece));
+						Position position5 = returnPlace(board5, Piece.opposite(piece));
+
+						// 盤の生成
+						Board board6 = new Board(board5.getBoard());
+						board6.putPiece(position5.getX(), position5.getY(), Piece.opposite(piece));
+
+						// その次の自分の番
+						int kaihoudo6 = returnMinKaihoudo(board6, piece);
+						Position position6 = returnPlace(board6, piece);
+
+						// 4回読む
+						// 盤の生成
+						Board board7 = new Board(board6.getBoard());
+						board7.putPiece(position6.getX(), position6.getY(), piece);
+
+						// その次の相手の番
+						int kaihoudo7 = returnMinKaihoudo(board7, Piece.opposite(piece));
+						Position position7 = returnPlace(board7, Piece.opposite(piece));
+
+						// 盤の生成
+						Board board8 = new Board(board7.getBoard());
+						board8.putPiece(position7.getX(), position7.getY(), Piece.opposite(piece));
+
+						// その次の自分の番
+						int kaihoudo8 = returnMinKaihoudo(board8, piece);
+						Position position8 = returnPlace(board8, piece);
 
 
 						// 発展開放度 ＝ 自分の開放度 - 相手の開放度 + 次の自分の開放度
-						int bestKaihoudo = value - oppositeKaihoudo + afterNextKaihoudo;
-//								- kaihoudo3 + kaihoudo4 - kaihoudo5 + kaihoudo6 - kaihoudo7 + kaihoudo8;
+						int bestKaihoudo = value - oppositeKaihoudo + afterNextKaihoudo
+								- kaihoudo3 + kaihoudo4 - kaihoudo5 + kaihoudo6 - kaihoudo7 + kaihoudo8;
 
 						// 真に小さい開放度が見つかった場合
 						if (bestKaihoudo < kaihoudo) {
