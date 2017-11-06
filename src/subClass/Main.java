@@ -66,7 +66,11 @@ public class Main
 		};
 
 		// 4すみに置けるか判断
-		value = 9;
+		// value = 9(これだと四隅の評価値が9の場合のみ下のif分を満たさないので、4すみを優先して取ってくれない）
+
+		//
+		// 4隅の評価値を取得する（代表で(0,0)の値を取得する）
+		value = _VALUES[0][0];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (board.isEnablePosition(i, j, piece) && _VALUES[i][j] == value) {
