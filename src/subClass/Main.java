@@ -25,7 +25,10 @@ public class Main
 
 		int kyokumenFlag = 0;
 		int cornerFlag = 0;
-		int value = 0;
+		int valueHidariUe = 0;
+		int valueHidariSita = 0;
+		int valueMigiUe= 0;
+		int valueMigiSita= 0;
 		int x = -1;
 		int y = -1;
 
@@ -70,11 +73,16 @@ public class Main
 		// 4隅の評価値が9以外のときは、4すみを優先して取ってくれない）
 
 		//
-		// 4隅の評価値を取得する（代表で(0,0)の値を取得する）
-		value = _VALUES[0][0];
+		// 4隅の評価値を取得する
+		valueHidariUe = _VALUES[0][0];
+		valueMigiUe = _VALUES[0][7];
+		valueHidariSita = _VALUES[7][0];
+		valueMigiSita = _VALUES[7][7];
+
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (board.isEnablePosition(i, j, piece) && _VALUES[i][j] == value) {
+				if (board.isEnablePosition(i, j, piece) && (_VALUES[i][j] == valueHidariUe ||
+						_VALUES[i][j] == valueMigiUe || _VALUES[i][j] == valueHidariSita || _VALUES[i][j] == valueMigiSita)) {
 
 					x = i;
 					y = j;
